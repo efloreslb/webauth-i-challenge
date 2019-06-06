@@ -1,10 +1,10 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-   post
+   add
 }
 
-function post(user) {
+function add(user) {
    return db('users').insert(user).then(ids => {
       return db('users');
    })

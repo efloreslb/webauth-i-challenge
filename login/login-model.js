@@ -1,11 +1,9 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-   post
+   findBy
 }
 
-function post(user) {
-   return db('users').insert(user).then(ids => {
-      return db('users');
-   })
+function findBy(username) {
+   return db('users').where({ username }).first();
 }
