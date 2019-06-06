@@ -1,14 +1,14 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 
-const Login = require('./login-model.js');
+const Users = require('../users/users-model.js');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
    let { username, password } = req.body;
 
    try {
-      const user = await Login.findBy(username);
+      const user = await Users.findBy(username);
       if(user && bcrypt.compareSync(password, user.password)) {
          res.status(200).json({ message: `Welcome ${user.username}, you are now logged in` })
       } else {
